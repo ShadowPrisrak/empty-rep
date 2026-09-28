@@ -35,25 +35,20 @@ int ** transpose(int ** mtx, size_t m, size_t n) {
 
   for (size_t i = 0; i<m; ++i) {
     for (size_t j = 0; j<m; ++j) {
+      newMtx[j][i] = mtx[i][j];
+    }
+  }
+  return newMtx;
+}
+
+void printMtx(int ** mtx, size_t m, size_t n) {
+  for (size_t i = 0; i<m; ++i) {
+    for (size_t j = 0; j<m; ++j) {
       std::cout << mtx[i][j] << (j + 1 == n ? "" : " ");
     }
     std::cout << '\n';
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
