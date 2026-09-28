@@ -53,33 +53,43 @@ void printMtx(int ** mtx, size_t m, size_t n) {
 
 
 int main() {
-    size_t m = 0;
-    size_t n = 0;
-    std::cin >> m >> n;
-    if (!std::cin) {
+  size_t m = 0;
+  size_t n = 0;
+
+  if (!(std::cin >> m >> n) || m==0 || n==0) {
+    return 1;
+  }
+
+  int ** mtx = nullptr;
+  int ** tMtx = nullptr;
+
+  try {
+    mtx = makeMtx(m,n);
+  } catch (const std::bad_alloc &) {
+    return 2;
+  }
+
+  for (size_t i = 0; i<m; ++i) {
+    for (size_t j = 0: j<n; ++j) {
+      if (!(std::cin >> mtx[i][j])) {
+        rmMtx(mtx, m);
         return 1;
+      }
     }
+  }
 
-    int ** mtx =nullptr;
-    mtx = makeMtx(mtx,m,n);
-
-    for (size_t i = 0; i<m*n; ++i) {
-        std::cin >> mtx[i/m][i%m] = 0;
-
-    }
-
-    if (std::cin.fail()) {
-        rmMtx(mtx,m);
-    }
-
-    transpose(mtx);
-
-
-    for (size_t i = 0; i<m*n; ++i) {
-        std::cout << mtx[i/m][i%m] = 0;
-
-    }
-
+  try {
+    tMtx = transpose(mtx,m,n);
+  } catch (const std::bad_alloc &) {
     rmMtx(mtx,m);
+    return 2;
+  }
+
+  printMtx(tMtx, n, m);
+
+  rmMtx(mtx, m);
+  rmMtx(mtx, n);
+
+  return 0;
 
 }
