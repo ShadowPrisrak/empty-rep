@@ -8,7 +8,7 @@ int ** makeMtx(size_t m, size_t n) {
   int ** mtxR = new int * [m];
 
   for (size_t i = 0; i<m; ++i) {
-    mtxR[i] = nullpr;
+    mtxR[i] = nullptr;
   }
 
   try {
@@ -16,6 +16,7 @@ int ** makeMtx(size_t m, size_t n) {
       mtxR[i] = new int [n];
     }
     return mtxR;
+  }
   catch (const std::bad_alloc & e) {
     rmMtx(mtxR, m);
     throw;
@@ -70,7 +71,7 @@ int main() {
   }
 
   for (size_t i = 0; i<m; ++i) {
-    for (size_t j = 0: j<n; ++j) {
+    for (size_t j = 0; j<n; ++j) {
       if (!(std::cin >> mtx[i][j])) {
         rmMtx(mtx, m);
         return 1;
@@ -88,7 +89,7 @@ int main() {
   printMtx(tMtx, n, m);
 
   rmMtx(mtx, m);
-  rmMtx(mtx, n);
+  rmMtx(tMtx, n);
 
   return 0;
 
