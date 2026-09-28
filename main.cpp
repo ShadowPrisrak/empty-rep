@@ -34,7 +34,7 @@ int ** transpose(int ** mtx, size_t m, size_t n) {
   int ** newMtx = makeMtx(n,m);
 
   for (size_t i = 0; i<m; ++i) {
-    for (size_t j = 0; j<m; ++j) {
+    for (size_t j = 0; j<n; ++j) {
       newMtx[j][i] = mtx[i][j];
     }
   }
@@ -43,7 +43,7 @@ int ** transpose(int ** mtx, size_t m, size_t n) {
 
 void printMtx(int ** mtx, size_t m, size_t n) {
   for (size_t i = 0; i<m; ++i) {
-    for (size_t j = 0; j<m; ++j) {
+    for (size_t j = 0; j<n; ++j) {
       std::cout << mtx[i][j] << (j + 1 == n ? "" : " ");
     }
     std::cout << '\n';
