@@ -22,7 +22,13 @@ int ** makeMtx(size_t m, size_t n) {
   }
 }
 
-
+void rmMtx(int ** mtx, size_t m) {
+  if (!mtx) return;
+  for (size_t i = 0; i<m; ++i) {
+    delete [] mtx[i];
+  }
+  delete [] mtx;
+}
 
 
 int main() {
